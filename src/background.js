@@ -13,13 +13,15 @@ protocol.registerSchemesAsPrivileged([
 async function createWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 720,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
     }
   })
+  //remove the main menu bar for a default window as it is not in the design
+  win.removeMenu();
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
