@@ -37,7 +37,10 @@ export default {
             let menu = this.$el.querySelector('.menu');
 
             mainButton.classList.toggle('color-inverted');
+            mainButton.classList.toggle('rotated');
+
             menu.classList.toggle('hidden');
+            
             this.menuOpen = !this.menuOpen;
         }
     }
@@ -47,7 +50,7 @@ export default {
 <style scoped lang="scss">
     .main-button{
         // transition is set so that the button may organically change color while the menu is animating inside
-        transition: background-color 2s, color 2s;
+        transition: background-color 2s, color 2s, transform 2s;
 
         position: relative; //positon is made relative so that z-index may be obeyed
         border: 2px solid black;
@@ -62,6 +65,9 @@ export default {
             color: black;
             background: white;
         }
+
+        // a minor animation to add some flavour 
+        &.rotated{  transform: rotateZ(90deg)  }
     }
 
     .menu{

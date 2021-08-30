@@ -9,6 +9,7 @@
   @import 'bulma/sass/utilities/functions';
 
   $link: #E12A2A;
+  $family-primary: 'Montserrat', sans-serif;
 
   @import 'bulma/bulma.sass';
 </style>
