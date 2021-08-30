@@ -1,5 +1,5 @@
 <template>
-    <div class="MainMenu">
+    <div id="MainMenu">
         <!-- start creating the button required to toggle main menu on and off -->
         <svg 
             class="main-button" 
@@ -54,7 +54,7 @@ export default {
 
         position: relative; //positon is made relative so that z-index may be obeyed
         border: 2px solid black;
-        border-radius: 50%;
+        border-radius: 30%;
 
         width: 75px;
         height: 75px;
