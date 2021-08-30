@@ -2,7 +2,7 @@
   <div id="home-view">
     <div id="main-toolbar">
       <MainMenu />
-      <Button />
+      <Button class="button is-link is-large"/>
       <Button />
       <SearchBar />
     </div>

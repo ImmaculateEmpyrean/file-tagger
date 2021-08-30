@@ -5,11 +5,14 @@
 </template>
 
 <style lang="scss">
+  @import 'bulmaswatch/Darkly/_variables.scss';
+
   @import 'bulma/sass/utilities/initial-variables';
   @import 'bulma/sass/utilities/functions';
 
-  $link: #E12A2A;
-  $family-primary: 'Montserrat', sans-serif;
-
+  $family-primary: 'Raleway', sans-serif;
+  
   @import 'bulma/bulma.sass';
+  @import "bulmaswatch/Darkly/_overrides.scss";
+
 </style>
