@@ -65,13 +65,21 @@ export default {
     },
     methods:{
         setCardWidth(){
+            let fileCardContainer = document.getElementById('file-cards');
+            let fileCardContainerStyle = window.getComputedStyle(fileCardContainer);
+
+            let marginLeft  = parseInt(fileCardContainerStyle.getPropertyValue("margin-left"));
+            let marginRight = parseInt(fileCardContainerStyle.getPropertyValue("margin-right"));
+
+            let margin = marginLeft+marginRight;
+
             let cardContainer = this.$el;
-            if(window.innerWidth > 1000){
+            if(document.body.clientWidth - margin > 1000){
                 cardContainer.style.minWidth = "1000px";
                 cardContainer.style.maxWidth = "1000px";
             }  else {
-                cardContainer.style.minWidth = `${window.innerWidth}px`
-                cardContainer.style.maxWidth = `${window.innerWidth}px`
+                cardContainer.style.minWidth = `${document.body.clientWidth - margin}px`
+                cardContainer.style.maxWidth = `${document.body.clientWidth - margin}px`   
             }
         }
     },
