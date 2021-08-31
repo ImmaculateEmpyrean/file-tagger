@@ -1,35 +1,39 @@
 <template>
-<div class="card-container">
-
-
-    <div class="card">
-        <header class="card-header">
-           <p class="card-header-title last-modified">
-                Last Modified - {{lastModified}}
-           </p>
-        </header>
-        <div class="card-content">
-            <div class="media">
-                <div class="media-left">
-                    <figure class="image is-48x48 main-icon">
-                        <image class="fas fa-file"></image>
-                        <!-- <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image"> -->
-                    </figure>
+    <div class="card-container">
+        <!-- start writing a bulma card -->
+        <div class="card">
+            <!-- the header tells me when the file was last modified -->
+            <header class="card-header">
+            <p class="card-header-title last-modified">
+                    Last Modified - {{lastModified}}
+            </p>
+            </header>
+            <!-- the card content contains the main information about the file -->
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <!-- icon of the file -->
+                        <figure class="image is-48x48 main-icon">
+                            <!-- this must be inserted dynamically by javascript.. i cannot know which icon before hand -->
+                            <i class="fas fa-file"></i> 
+                        </figure>
+                    </div>
+                    <!-- the path is arguably the most important parameter of any file -->
+                    <div class="media-content path-size">
+                        <p class="title is-4">{{path}}</p>
+                        <p class="subtitle is-6">{{size}}</p>
+                    </div>
                 </div>
-                <div class="media-content path-size">
-                    <p class="title is-4">{{path}}</p>
-                    <p class="subtitle is-6">{{size}}</p>
+                <!-- the tags is the whole point of this application! -->
+                <div class="content tags-container">
+                    <Tag />
+                    <Tag />
+                    <Tag />
+                    <Tag />
                 </div>
-            </div>
-            <div class="content tags-container">
-                <Tag />
-                <Tag />
-                <Tag />
-                <Tag />
             </div>
         </div>
-    </div>
-
+        <!-- ended writing a bulma card -->
     </div>
 </template>
 
