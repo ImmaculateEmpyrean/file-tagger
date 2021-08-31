@@ -11,7 +11,8 @@
         <Button 
           id="SourceManagerButton"
           class="button is-primary is-medium"
-          buttonText="Source"/>
+          buttonText="Source"
+          @button:clicked="SourceManagerButtonClicked"/>
         <Button 
           id="FilterManagerModal"
           class="button is-primary is-medium"
@@ -34,6 +35,7 @@
     </div>
 
     <!-- these two modals are to be shown only when the corresponding buttons are pressed -->
+     
     <SourceManager v-if="showSourceModal"/>
     <FilterManager v-if="showFilterModal"/>
 
@@ -71,6 +73,11 @@ export default {
   methods:{
     testTagDeleted(name){
       console.log('tag deleted',name);
+    },
+    SourceManagerButtonClicked(){
+      this.showSourceModal = !this.showSourceModal;
+      console.log(this.showSourceModal);
+      this.$forceUpdate();
     }
   }
 }
