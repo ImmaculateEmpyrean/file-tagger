@@ -14,8 +14,7 @@
                     <div class="media-left">
                         <!-- icon of the file -->
                         <figure class="image is-48x48 main-icon">
-                            <!-- this must be inserted dynamically by javascript.. i cannot know which icon before hand -->
-                            <i class="fas fa-file"></i> 
+                            <!-- icon must be added here by javascript dynamically at runtime -->
                         </figure>
                     </div>
                     <!-- the path is arguably the most important parameter of any file -->
@@ -56,7 +55,7 @@ export default {
         },
         path:{
             type: String,
-            default: "D:/game/othercide.exe"
+            default: "D:/document/resume/latest/resume-veeru.pdf"
         },
         size:{
             type: String,
@@ -81,10 +80,40 @@ export default {
                 cardContainer.style.minWidth = `${document.body.clientWidth - margin}px`
                 cardContainer.style.maxWidth = `${document.body.clientWidth - margin}px`   
             }
+        },
+        setCardIcon(){
+                let iconHolder = this.$el.querySelector('figure.main-icon');
+                let iconAtlas = require('@/assets/json/fileTypes');
+
+                let fs = window.require('fs');
+                let stats = fs.statSync(this.path);
+
+                if(stats.isFile()){
+                    //this path corresponds to a file.. get the correct icon
+                    let fileExtension = this.path.slice(this.path.lastIndexOf('.')+1,this.path.length);
+                    if(fileExtension in iconAtlas){
+                        iconHolder.innerHTML = iconAtlas[fileExtension].icon; 
+                    } else {
+                        iconHolder.innerHTML = '<i class="fas fa-folder"></i>'
+                    } 
+                } else if(stats.isDirectory()){
+                    //this path corresponds to a directory
+                    iconHolder.innerHTML = '<i class="fas fa-folder"></i>';    
+                } else {
+                    //the application for now only handles files and directories..
+                    console.log('found something that is not either file or directory : ',stats);
+                }
+
+                let icon = iconHolder.querySelector('*:nth-child(1)')
+                console.log(icon);
+                icon.style.width = "100%";
+                icon.style.height = "100%";
         }
     },
     mounted(){
+        this.setCardIcon();
         this.setCardWidth();
+
         window.addEventListener('resize',this.setCardWidth);
     }
 }
@@ -104,11 +133,6 @@ export default {
     .tags-container{
         display: flex;
         column-gap: $spacing-small;
-    }
-
-    figure.main-icon > * {
-        width: 100%;
-        height: 100%;
     }
 
     .card-actions{
