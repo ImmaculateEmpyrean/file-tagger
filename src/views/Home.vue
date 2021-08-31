@@ -10,11 +10,11 @@
       <div class="functional-buttons">
         <Button 
           id="SourceManagerButton"
-          class="button is-primary is-large"
+          class="button is-primary is-medium"
           buttonText="Source"/>
         <Button 
           id="FilterManagerModal"
-          class="button is-primary is-large"
+          class="button is-primary is-medium"
           buttonText="Filters"/>
       </div>
 

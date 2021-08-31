@@ -1,7 +1,7 @@
 <template>
     <input
         id="SearchBar" 
-        class="input is-primary is-large" type="text" placeholder="Start Searching For A File...">
+        class="input is-primary is-medium" type="text" placeholder="Start Searching For A File...">
 </template>
 
 <script>
