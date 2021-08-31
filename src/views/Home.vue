@@ -25,8 +25,14 @@
 
     <div id="filters-row">  
       Filters Added -
-      <FilterRowTag />
+      <Tag @tag:deleted="testTagDeleted"/>
     </div>
+
+    <div id="file-cards">
+      <FileCard />
+      <FileCard />
+    </div>
+
     <!-- these two modals are to be shown only when the corresponding buttons are pressed -->
     <SourceManager v-if="showSourceModal"/>
     <FilterManager v-if="showFilterModal"/>
@@ -40,8 +46,10 @@ import SearchBar      from '../components/SearchBar.vue';
 import FilterManager  from '../components/FilterManager.vue';
 import SourceManager  from '../components/SourceManager.vue';
 
+import FileCard       from '../components/FileCard.vue';
+
 import Button         from '../components/primitive/Button.vue';
-import FilterRowTag   from '../components/primitive/FilterRowTag.vue';
+import Tag            from '../components/primitive/Tag.vue';
 
 export default {
   name: 'Home',
@@ -51,12 +59,18 @@ export default {
     FilterManager,
     SourceManager,
     Button,
-    FilterRowTag
+    Tag,
+    FileCard
   },
   data (){
     return {
       showSourceModal: false,
       showFilterModal: false
+    }
+  },
+  methods:{
+    testTagDeleted(name){
+      console.log('tag deleted',name);
     }
   }
 }
@@ -96,5 +110,13 @@ export default {
 
     padding: $spacing-small $spacing-normal;
     border-bottom: 2px solid black;
+  }
+
+  #file-cards{
+    margin: $spacing-normal;
+    
+    display: flex;
+    flex-direction: column;
+    row-gap: $spacing-small;
   }
 </style>

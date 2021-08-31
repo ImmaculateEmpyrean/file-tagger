@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name: "FilterRowTag",
+    name: "Tag",
     props:{
         tagName:{
             type: String,
