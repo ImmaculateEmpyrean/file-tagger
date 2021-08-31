@@ -32,6 +32,10 @@
                     <Tag />
                 </div>
             </div>
+            <footer class="card-footer card-actions">
+                <button class="button is-small is-link">add tag</button>
+                <button class="button is-small is-link"><i class="fas fa-external-link-alt"></i></button>
+            </footer>
         </div>
         <!-- ended writing a bulma card -->
     </div>
@@ -86,8 +90,6 @@ export default {
     }
 
     .card-container{
-        max-width: 1000px;
-        //min-width: 1000px;
         margin: 0 auto;
     }
 
@@ -99,5 +101,11 @@ export default {
     figure.main-icon > * {
         width: 100%;
         height: 100%;
+    }
+
+    .card-actions{
+        display: flex;
+        column-gap: $spacing-small;
+        justify-content: flex-end;
     }
 </style>
