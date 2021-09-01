@@ -34,11 +34,27 @@
       <FileCard />
     </div>
 
-    <!-- these two modals are to be shown only when the corresponding buttons are pressed -->
-     
-    <SourceManager v-if="showSourceModal"/>
-    <FilterManager v-if="showFilterModal"/>
+    <transition 
+            name="routerTransition"
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+            mode="out-in"
+    >
+      <!-- these two modals are to be shown only when the corresponding buttons are pressed -->
+      <SourceManager 
+        v-if="showSourceModal"
+        @modal:close="showSourceModal=false"
+      />
+    </transition>
 
+    <transition 
+            name="routerTransition"
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+            mode="out-in"
+    >
+      <FilterManager v-if="showFilterModal"/>
+    </transition>
   </div>
 </template>
 
