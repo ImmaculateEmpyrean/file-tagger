@@ -1,10 +1,17 @@
 <template>
     <div class="field has-addons">
         <div class="control">
-            <input class="input" type="text" placeholder="SourcePath">
+            <input 
+                class="input" type="text" 
+                placeholder="enter a path here" 
+                disabled
+            >
         </div>
         <div class="control">
-            <a class="button is-link">
+            <a 
+                class="button is-link"
+                @click="toggleInput"
+            >
                 <i class="fas fa-edit"></i>
             </a>
         </div>
@@ -18,7 +25,29 @@
 
 <script>
 export default {
-    name: "PathHolder"
+    name: "PathHolder",
+    props:{
+        path:{
+            type: String,
+            default: "No Path"
+        }
+    },
+    data() {
+        return {
+            pathInternal: "Internal No Path"
+        }
+    },
+    methods:{
+        toggleInput(){
+            let pathInput = this.$el.querySelector('input[type=text]');
+            pathInput.disabled = !pathInput.disabled;
+        }
+    },
+    mounted(){
+        this.pathInternal = this.path;
+        let pathInput = this.$el.querySelector('input[type=text]');
+        pathInput.value = this.pathInternal;
+    }
 }
 </script>
 
